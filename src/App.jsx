@@ -1,7 +1,7 @@
 import BannerRight from './assets/banner-right.png'
 import BannerLeft from './assets/banner-left.png'
-import EngagementParty from './assets/engagement-party.png'
-import McCleanWedding from './assets/mcclean-wedding.png'
+import EngagementParty from './assets/engagement-party.jpg'
+import McCleanWedding from './assets/mcclean-wedding.jpg'
 import { Bars3Icon } from '@heroicons/react/24/solid'
 
 import './App.css'
@@ -18,6 +18,83 @@ function App() {
       </div>
     )
   }
+
+  const conciergeIdeas = [
+    { 
+      name: "Old Town La Quinta", 
+      link: "", 
+      sublinks: [
+        {
+          name: "Nitroinfusions",
+          note: "For the kids at heart",
+          link: "https://maps.app.goo.gl/oMiDdKVWjHPvwP4k8"
+        }
+      ] 
+    },
+    { 
+      name: "Golf", 
+      link: "", 
+      sublinks: [
+        { name: "Indian Wells Golf Resort", link: "https://www.indianwellsgolfresort.com/book_tt" }
+      ] 
+    },
+    { 
+      name: "Local hikes", 
+      link: "", 
+      sublinks: [
+        { 
+          name: "Bump & Grind", 
+          note: "Our first hike together!", 
+          link: "https://maps.app.goo.gl/vo2UbRLPjLtBeH727" 
+        }
+      ] 
+    },
+    { 
+      name: "Joshua Tree", 
+      note: "Get a date shake",
+      link: "https://maps.app.goo.gl/aUnsJpajCXS7oU876", 
+      sublinks: [
+        { 
+          name: "Pappy and Harriets", 
+          note: "Pioneertown is cool",
+          link: "https://maps.app.goo.gl/seyuXYsE5hHBw6k49" 
+        }
+      ] 
+    },
+    { 
+      name: "Cliffhouse", 
+      note: "Peak happy hour",
+      link: "https://maps.app.goo.gl/PT7W6Jf28V2mmXXZ6", 
+      sublinks: []
+    },
+    { 
+      name: "Downtown Palm Springs", 
+      link: "", 
+      sublinks: [
+        { 
+          name: "Bootlegger Tiki", 
+          note: "No corporate mai tais here",
+          link: "https://maps.app.goo.gl/YjmUYqXhB1qwMTof9" 
+        }, 
+        { 
+          name: "Las Palmas Brewing", 
+          link: "https://maps.app.goo.gl/d1Zs3q5bCJSoHj9B7" 
+        }
+      ] 
+    },
+    { 
+      name: "Castelli's Ristorante", 
+      note: "Muey authentico", 
+      link: "https://maps.app.goo.gl/cdz6ivtSMWn9ZbuE9", 
+      sublinks: [] 
+    },
+    { 
+      name: "The Nest", 
+      link: "https://maps.app.goo.gl/9VjNW7xdRwQd9tpE7", 
+      note: "Crazy clientele, arrive early", 
+      sublinks: [] 
+    },
+  ]
 
   return (
     <div className='w-full'>
@@ -73,32 +150,48 @@ function App() {
         <div className="flex flex-col justify-between items-center" style={{ height: `${sectionHeight}px` }}>
           <h2 className="text-[40px] text-dark-green">Registry</h2>
           <div className='flex-grow flex flex-col'>
-            <div className="h-1/4"></div>
+            <div className="h-1/5"></div>
             <a 
               href="https://www.crateandbarrel.com/gift-registry/mckenzie-graham-and-kyle-andrews/r7166659" 
-              className='text-dark-green text-[20px] mt-6' 
+              className='text-[20px] mt-6' 
               target="_blank"
             >Crate & Barrel</a>
             <a 
               href="https://www.amazon.com/wedding/registry/1BH17SI7J5YMT" 
-              className='text-dark-green text-[20px] mt-6' 
+              className='text-[20px] mt-6' 
               target="_blank"
             >Amazon</a>
             <a 
               href="https://venmo.com/code?user_id=1500996287070208159&created=1724128318.95329@printed=1" 
-              className='text-dark-green text-[20px] mt-6' 
+              className='text-[20px] mt-6' 
               target="_blank"
             >Honeymoon Fund</a>
           </div>
         </div>
       <img src={BannerLeft} />
-        {/* <div className="flex flex-col justify-between items-center" style={{ height: `${sectionHeight}px` }}>
-          <h2 className="text-[40px] text-dark-green">Concierge</h2>
-          <div className='flex flex-col justify-around items-center flex-grow'>
-          </div>
+      <div className="flex flex-col items-center px-10">
+        <h2 className="text-[40px] text-dark-green">Concierge</h2>
+        <div className='w-full flex flex-col items-start'>
+          {conciergeIdeas.map(idea => {
+            return <div className="mb-6 flex flex-col items-start">
+              {idea.link 
+                ? <a className="text-xl font-semibold" href={`${idea.link}`} target="_blank">{idea.name}</a>
+                : <p className='text-dark-green font-semibold text-xl'>{idea.name}</p>}
+              {idea.note && <p className='text-dark-green text-xs ml-2'>- "{idea.note}"</p>}
+              <div className='flex flex-col items-start w-full ml-6'>
+                {idea.sublinks.map(subIdea => {
+                  return <div className='flex flex-col items-start'>
+                    <a className="" href={`${subIdea.link}`} target="_blank">{subIdea.name}</a>
+                    {subIdea.note && <p className='text-dark-green text-xs ml-2'>- "{subIdea.note}"</p>}
+                  </div>
+                })}
+              </div>
+            </div>
+          })}
         </div>
+      </div>
       <img src={BannerRight} />
-      <img src={BannerLeft} />
+      {/* <img src={BannerLeft} />
       <img src={BannerRight} /> */}
 
     </div>
