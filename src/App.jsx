@@ -75,12 +75,12 @@ function App() {
           <div className='flex-grow flex flex-col'>
             <div className="h-1/4"></div>
             <a 
-              href="" 
+              href="https://www.crateandbarrel.com/gift-registry/mckenzie-graham-and-kyle-andrews/r7166659" 
               className='text-dark-green text-[20px] mt-6' 
               target="_blank"
             >Crate & Barrel</a>
             <a 
-              href="" 
+              href="https://www.amazon.com/wedding/registry/1BH17SI7J5YMT" 
               className='text-dark-green text-[20px] mt-6' 
               target="_blank"
             >Amazon</a>
