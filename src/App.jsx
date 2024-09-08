@@ -20,15 +20,90 @@ function App() {
   }
 
   const conciergeIdeas = [
+    {
+      name: "Indian Wells",
+      link: "",
+      sublinks: [
+        { 
+          name: "Cliffhouse", 
+          note: "Peak happy hour",
+          link: "https://maps.app.goo.gl/PT7W6Jf28V2mmXXZ6", 
+          sublinks: []
+        },
+        {
+          name: "IW Coffee",
+          note: "If not here, then it's Starbucks",
+          link: "https://maps.app.goo.gl/anwnz6mWhVp4zXHKA",
+          sublinks: []
+        },
+        { 
+          name: "The Nest", 
+          link: "https://maps.app.goo.gl/9VjNW7xdRwQd9tpE7", 
+          note: "Crazy clientele, arrive early", 
+          sublinks: [] 
+        },
+        {
+          name: "Living Desert Zoo and Gardens",
+          note: "",
+          link: "https://maps.app.goo.gl/WLA3KXvABY6f1yQG7",
+          sublinks: []
+        },
+        { 
+          name: "Castelli's Ristorante", 
+          note: "Muey authentico", 
+          link: "https://maps.app.goo.gl/cdz6ivtSMWn9ZbuE9", 
+          sublinks: [] 
+        },
+      ]
+    },
     { 
       name: "Old Town La Quinta", 
       link: "", 
       sublinks: [
         {
+          name: "La Quinta Brewing Co.",
+          note: "",
+          link: "https://maps.app.goo.gl/xK1oNWiXZftggkVn7",
+          sublinks: []
+        },
+        {
           name: "Nitroinfusions",
           note: "For the kids at heart",
           link: "https://maps.app.goo.gl/oMiDdKVWjHPvwP4k8"
         }
+      ] 
+    },
+        { 
+      name: "Downtown Palm Springs", 
+      link: "", 
+      sublinks: [
+        {
+          name: "Melvyn's",
+          note: "at the Ingleside Estate",
+          link: "https://maps.app.goo.gl/4WDWxcJgHozdJGD66",
+          sublinks: []
+        },
+        { 
+          name: "Bootlegger Tiki", 
+          note: "No corporate mai tais here",
+          link: "https://maps.app.goo.gl/YjmUYqXhB1qwMTof9" 
+        }, 
+        {
+          name: "Sherman's Deli & Bakery",
+          note: "Old school deli",
+          link: "https://maps.app.goo.gl/ZMn6HcjcvRoKrAxd6",
+          sublinks: []
+        },
+        { 
+          name: "Las Palmas Brewing", 
+          link: "https://maps.app.goo.gl/d1Zs3q5bCJSoHj9B7" 
+        },
+        {
+          name: "Palm Springs Aerial Tramway",
+          note: "",
+          link: "https://maps.app.goo.gl/LJX3fZngqUcXw6Lw6",
+          sublinks: []
+        },
       ] 
     },
     { 
@@ -60,40 +135,7 @@ function App() {
           link: "https://maps.app.goo.gl/seyuXYsE5hHBw6k49" 
         }
       ] 
-    },
-    { 
-      name: "Cliffhouse", 
-      note: "Peak happy hour",
-      link: "https://maps.app.goo.gl/PT7W6Jf28V2mmXXZ6", 
-      sublinks: []
-    },
-    { 
-      name: "Downtown Palm Springs", 
-      link: "", 
-      sublinks: [
-        { 
-          name: "Bootlegger Tiki", 
-          note: "No corporate mai tais here",
-          link: "https://maps.app.goo.gl/YjmUYqXhB1qwMTof9" 
-        }, 
-        { 
-          name: "Las Palmas Brewing", 
-          link: "https://maps.app.goo.gl/d1Zs3q5bCJSoHj9B7" 
-        }
-      ] 
-    },
-    { 
-      name: "Castelli's Ristorante", 
-      note: "Muey authentico", 
-      link: "https://maps.app.goo.gl/cdz6ivtSMWn9ZbuE9", 
-      sublinks: [] 
-    },
-    { 
-      name: "The Nest", 
-      link: "https://maps.app.goo.gl/9VjNW7xdRwQd9tpE7", 
-      note: "Crazy clientele, arrive early", 
-      sublinks: [] 
-    },
+    }
   ]
 
   return (
