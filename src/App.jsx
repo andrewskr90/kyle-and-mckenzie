@@ -1,19 +1,39 @@
 import BannerRight from './assets/banner-right.png'
 import BannerLeft from './assets/banner-left.png'
+import BannerRightDesktop from './assets/banner-right-desktop.png'
+import BannerLeftDesktop from './assets/banner-left-desktop.png'
 import EngagementParty from './assets/engagement-party.jpg'
 import McCleanWedding from './assets/mcclean-wedding.jpg'
+import { isMobile  } from 'react-device-detect'
 import { Bars3Icon } from '@heroicons/react/24/solid'
 
 import './App.css'
+import { twMerge } from 'tailwind-merge'
 
 function App() {
 
   const sectionHeight = screen.availHeight*0.8
 
+    const Banner = (props) => {
+    const { side } = props
+    const bannerSrc = 
+      isMobile 
+        ? side === 'right'
+          ? BannerRight 
+          : BannerLeft
+        : side === 'right'
+          ? BannerRightDesktop
+          : BannerLeftDesktop
+    return (
+      <img className='w-full' src={bannerSrc} />
+    )
+  }
+
   const Header = () => {
     return (
       <div className='w-full relative'>
-        <img src={BannerLeft} className='w-full' />
+        
+        <Banner side={'left'} />
         {/* <Bars3Icon className="text-dark-green w-10 fixed right-0 top-0"/> */}
       </div>
     )
@@ -137,85 +157,100 @@ function App() {
       ] 
     }
   ]
+  const Section = ({ children, className }) => {
+    return (
+      <div className={twMerge(isMobile ? "px-10" : "px-40", `flex flex-col justify-between items-center`, className)} style={{ height: `${sectionHeight}px` }}>
+        {children}
+      </div>
+    )
+  }
+
+  const TextBlock = ({ children }) => {
+    return (
+      <div className={twMerge(isMobile ? "" : "w-1/2 h-1/2", 'flex flex-col items-center text-dark-green')}>
+        {children}
+      </div>
+    )
+  }
 
   return (
     <div className='w-full'>
       <Header />
-        <div className="flex flex-col justify-center items-center px-10" style={{ height: `${sectionHeight}px` }}>
-          <div className="w-full mb-6">
-            <h1 className='font-lindenHill text-dark-green text-left text-[60px]'>Kyle</h1>
-            <h1 className='font-mrsSaintDelafield text-dark-green w-2/5 text-end leading-10'>and</h1>
-            <h1 className='font-lindenHill text-dark-green w-full text-end'>McKenzie</h1>
-          </div>
-          <h2 className="font-lifeSavers text-dark-green text-[24px]">Saturday, October 12, 2024</h2>
+        <Section className="justify-center">
+        <div className={twMerge(isMobile ? "w-full" : "w-3/5", "mb-6")}>
+          <h1 className='font-lindenHill text-dark-green text-left text-[60px]'>Kyle</h1>
+          <h1 className='font-mrsSaintDelafield text-dark-green w-2/5 text-end leading-10'>and</h1>
+          <h1 className='font-lindenHill text-dark-green w-full text-end text-[60px]'>McKenzie</h1>
         </div>
-        <img src={BannerRight} />
-        <div className="flex flex-col justify-between items-center px-10" style={{ height: `${sectionHeight}px` }}>
-          <h2 className="text-[40px] text-dark-green">We're getting married!</h2>
-          <div className='flex flex-col justify-around items-center flex-grow'>
-            <div className='flex justify-around items-center'>
-              <h3 className='text-dark-green text-[20px] w-1/2'>Welcome to our wedding website!</h3>
-              <img src={EngagementParty} className="w-1/2 m-2" />
-            </div>
-            <div className='flex justify-around items-center'>
-              <img src={McCleanWedding} className="w-1/2 m-2"/>
-              <h3 className='text-dark-green text-[20px] w-1/2'>Check back here for updates on our big day</h3>
-            </div>
+        <h2 className="font-lifeSavers text-dark-green text-[24px]">Saturday, October 12, 2024</h2>
+      </Section>
+      <Banner side={'right'} />
+      <Section>
+        <h2 className={twMerge( isMobile ? "" : "h-1/6", "text-[40px] text-dark-green flex flex-col justify-center")}>We're getting married!</h2>
+        <div className={twMerge(isMobile ? 'flex-col' : 'flex-row h-5/6', 'flex justify-around items-center flex-grow')}>
+          <div className={twMerge(isMobile ? 'flex-row' : 'w-1/2 flex-col-reverse h-full', 'flex justify-around items-center')}>
+            <h3 className={twMerge(isMobile ? '' : '', 'text-dark-green text-[20px] w-1/2 flex flex-col justify-center')}>Welcome to our wedding website!</h3>
+            <img src={EngagementParty} className={twMerge(isMobile ? "w-1/2" : "h-2/3", "m-2")} />
           </div>
-        </div>
-      <img src={BannerLeft} />
-      <div className="flex flex-col justify-between items-center" style={{ height: `${sectionHeight}px` }}>
-          <h2 className="text-[40px] text-dark-green">Schedule</h2>
-          <div className='flex flex-col justify-around items-center flex-grow'>
-              <div className='flex flex-col items-center'>
-                <h3 className='text-dark-green text-[18px] font-semibold'>Thursday, October 10</h3>
-                <p className="text-dark-green">6pm</p>
-                <p className="text-dark-green">Welcome party</p>
-                <a href="https://www.google.com/travel/hotels/s/uxfcV4VaC6rTL16a8" target="_blank">Indian Wells Resort Hotel</a>
-                <p className="text-dark-green">Poolside</p>
-              </div>
-              <div className='flex flex-col items-center text-dark-green'>
-                <h3 className='text-[18px] font-semibold'>Friday, October 11</h3>
-                <p>Free day</p>
-                {/* <p>for ideas, check out<br/>the concierge section</p> */}
-              </div>
-              <div className='flex flex-col items-center text-dark-green'>
-                <h3 className='text-[18px] font-semibold'>Saturday, October 12</h3>
-                <p>3:30 pm<br/>Ceremony</p>
-                <a href="https://maps.app.goo.gl/erf4rsvZWM3M4QTb8" target="_blank">Scott & Jan’s House</a>
-                <p className='mt-2'>5 pm<br/>Cocktail hour and reception</p>
-                <a href="https://maps.app.goo.gl/pnvHW19YYjHaFUgB8" target="_blank">Vicky’s of Santa Fe</a>
-              </div>
+          <div className={twMerge(isMobile ? 'flex-row' : 'w-1/2 flex-col h-full', 'flex justify-around items-center')}>
+            <img src={McCleanWedding} className={twMerge(isMobile ? "w-1/2" : "h-2/3", "m-2")}/>
+            <h3 className='text-dark-green text-[20px] w-1/2'>Check back here for updates on our big day</h3>
           </div>
         </div>
-      <img src={BannerRight} />
-        <div className="flex flex-col justify-between items-center" style={{ height: `${sectionHeight}px` }}>
-          <h2 className="text-[40px] text-dark-green">Registry</h2>
-          <div className='flex-grow flex flex-col'>
-            <div className="h-1/5"></div>
-            <a 
-              href="https://www.crateandbarrel.com/gift-registry/mckenzie-graham-and-kyle-andrews/r7166659" 
-              className='text-[20px] mt-6' 
-              target="_blank"
-            >Crate & Barrel</a>
-            <a 
-              href="https://www.amazon.com/wedding/registry/1BH17SI7J5YMT" 
-              className='text-[20px] mt-6' 
-              target="_blank"
-            >Amazon</a>
-            <a 
-              href="https://venmo.com/code?user_id=1500996287070208159&created=1724128318.95329@printed=1" 
-              className='text-[20px] mt-6' 
-              target="_blank"
-            >Honeymoon Fund</a>
-          </div>
+      </Section>
+      <Banner side={'left'} />
+      <Section>
+        <h2 className="text-[40px] text-dark-green">Schedule</h2>
+        <div className={twMerge(isMobile ? "flex-col justify-around items-center" : "flex-row justify-center items-start flex-wrap mt-10 h-5/6", 'flex flex-grow')}>
+            <TextBlock>
+              <h3 className='text-[18px] font-semibold'>Thursday, October 10</h3>
+              <p>6pm</p>
+              <p>Welcome party</p>
+              <a href="https://www.google.com/travel/hotels/s/uxfcV4VaC6rTL16a8" target="_blank">Indian Wells Resort Hotel</a>
+              <p>Poolside</p>
+            </TextBlock>
+            <TextBlock>
+              <h3 className='text-[18px] font-semibold'>Friday, October 11</h3>
+              <p>Free day</p>
+              {/* <p>for ideas, check out<br/>the concierge section</p> */}
+            </TextBlock>
+            <TextBlock>
+              <h3 className='text-[18px] font-semibold'>Saturday, October 12</h3>
+              <p>3:30 pm<br/>Ceremony</p>
+              <a href="https://maps.app.goo.gl/erf4rsvZWM3M4QTb8" target="_blank">Scott & Jan’s House</a>
+              <p className='mt-2'>5 pm<br/>Cocktail hour and reception</p>
+              <a href="https://maps.app.goo.gl/pnvHW19YYjHaFUgB8" target="_blank">Vicky’s of Santa Fe</a>
+            </TextBlock>
         </div>
-      <img src={BannerLeft} />
-      <div className="flex flex-col items-center px-10">
+      </Section>
+      <Banner side={'right'} />
+      <Section>
+        <h2 className="text-[40px] text-dark-green">Registry</h2>
+        <div className={twMerge(isMobile ? "text-[20px]" : "text-[24px]", 'flex-grow flex flex-col')}>
+          <div className="h-1/5"></div>
+          <a 
+            href="https://www.crateandbarrel.com/gift-registry/mckenzie-graham-and-kyle-andrews/r7166659" 
+            className='mt-6' 
+            target="_blank"
+          >Crate & Barrel</a>
+          <a 
+            href="https://www.amazon.com/wedding/registry/1BH17SI7J5YMT" 
+            className='mt-6' 
+            target="_blank"
+          >Amazon</a>
+          <a 
+            href="https://venmo.com/code?user_id=1500996287070208159&created=1724128318.95329@printed=1" 
+            className='mt-6' 
+            target="_blank"
+          >Honeymoon Fund</a>
+        </div>
+      </Section>
+      <Banner side={'left'} />
+      <div className="flex flex-col items-center px-10 w-full">
         <h2 className="text-[40px] text-dark-green">Concierge</h2>
-        <div className='w-full flex flex-col items-start'>
+        <div className={twMerge(isMobile ? "w-full flex-col items-start" : "w-4/5 flex-wrap my-12", 'flex')}>
           {conciergeIdeas.map(idea => {
-            return <div className="mb-6 flex flex-col items-start">
+            return <div className="mb-6 flex flex-col items-start w-1/3">
               {idea.link 
                 ? <a className="text-xl font-semibold" href={`${idea.link}`} target="_blank">{idea.name}</a>
                 : <p className='text-dark-green font-semibold text-xl'>{idea.name}</p>}
@@ -232,10 +267,7 @@ function App() {
           })}
         </div>
       </div>
-      <img src={BannerRight} />
-      {/* <img src={BannerLeft} />
-      <img src={BannerRight} /> */}
-
+      <Banner side={'right'} />
     </div>
   )
 }
